@@ -5,9 +5,9 @@ include 'headpage.php';
     <?php
     $kat_counter=0;
     $kat_seite=0;
-    $servername = "localhost";
+    $servername = "5.189.128.204";
     $username = "root";
-    $password = "";
+    $password = "FA18B";
     $dbname = "speisekarte";
 
     //Kategorie anzeigen
