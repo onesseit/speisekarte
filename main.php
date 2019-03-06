@@ -1,68 +1,52 @@
 <?php
 include 'headpage.php';
 ?>
+    <button id="test" onclick="myFunction1()">
+        <img src="left2.png" style="width: 200px; height: 200px;position: absolute ;left: 0; margin-top: 15%" id="button">
+    </button>
+
+    <button id="test" onclick="myFunction2()">
+        <img src="right.png" style="width: 200px; height: 200px;position: absolute ; right: 0; margin-top: 15%">
+    </button>
 <div class="main">
+
+
     <?php
-    $kat_counter=0;
-    $kat_seite=0;
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $servername = "5.189.128.204";
+    $username = "speise";
+    $password = "FA18B";
     $dbname = "speisekarte";
 
-    //Kategorie anzeigen
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "SELECT kategorie FROM kategorien";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        echo "<tr data-href='test.php'>";
-        while($row = $result->fetch_assoc()) {
-        $kat_counter++;
-        }
-    }
-    $conn->close();
-    echo $kat_counter;
+    $sql = "SELECT * FROM kategorien";
+    $kategorien = $conn->query($sql);
 
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
-    $sql = "SELECT name, beschreibung, small_preis, large_preis FROM produkte";
-    $result = $conn->query($sql);
-    ?>
-    <table style="text-align: left; width: 100%;" border="1" class="sortierbar"
-           cellpadding="2" cellspacing="2">
-        <thead>
-        <tr>
-            <th rowspan="2">Produkt</th>
-            <th rowspan="2">Beschreibung</th>
-            <th colspan="2" style="text-align: center">Preis</th>
-        </tr>
-        <tr>
-            <th>kleine Portion</th>
-            <th>große Portion</th>
-        </tr>
-        </thead>
-        <tbody>
+    while($row = $kategorien->fetch_assoc())
+    {
+        echo "<div id='kat". $row["id"]."'>";
+        echo "<h1 style='text-align: center'>". $row["kategorie"]."</h1>";
+            $sql = "SELECT name, beschreibung, small_preis, large_preis FROM produkte WHERE produkte.kategorie= '" . $row["id"] . "'";
+            $result = $conn->query($sql);
+            ?>
+            <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2" class="table">
+                <tbody>
+                <?php
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    echo "<tr data-href='test.php'>";
+                    while($row = $result->fetch_assoc()) {
+                        echo "<td class='element' style='width: 70%'><p style='margin: 0px; font-size: 20px'>" . $row["name"]. "</p><br><p style='margin: 0px; font-size: 12px;padding-top: 0px'>" . $row["beschreibung"]."</p></td><td>kleine Portion: " . $row["small_preis"]."<br><br>große Portion: " . $row["large_preis"]. "</td></tr>";
+                    }
+                }
+                ?>
+                </tbody></table>
+        </div>
         <?php
-        if ($result->num_rows > 0) {
-            // output data of each row
-            echo "<tr data-href='test.php'>";
-            while($row = $result->fetch_assoc()) {
-                echo "<td class='element'>" . $row["name"]. "</td><td>" . $row["beschreibung"]."</td><td>" . $row["small_preis"]."</td><td>" . $row["large_preis"]. "</td></tr>";
-            }
-        } else {
-            echo "0 results";
-        }
-        $conn->close();
-        ?>
+    }
+    ?>
 </div>
-
 
 <?php
 include 'buttompage.php';
