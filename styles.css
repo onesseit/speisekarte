@@ -14,34 +14,53 @@ body
     height: 100%;
 
 }
-.element{
+#element{
     padding-top: 1em;
     padding-bottom: 1em;
 }
-#kat0
-{
-    background-color: greenyellow;
-}
-#kat1
-{
-    background-color: gold;
-    display: none;
-}
-#kat2
-{
-    background-color: blueviolet;
-    display: none;
-}
-#kat3
-{
-    background-color: wheat;
-    display: none;
-}
+
 #test
 {
     max-width: 0px;
 }
-.table
+.table td
 {
     border: none;
+}
+.table tr
+{
+    border-bottom: 1px black;
+}
+.table table
+{
+    border: none;
+    border-top: 1px black solid;
+}
+.table
+{border-top: 1px black solid;}
+
+
+
+.swipe {
+    background-color: ghostwhite;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+    padding-left: 2%;
+    margin-left: 25%;
+    width: 48%;
+}
+.swipe-wrap {
+    overflow: hidden;
+    position: relative;
+}
+.swipe-wrap > div {
+    float: left;
+    position: relative;
+    overflow: hidden;
+}
+.bunt
+{
+    background: deepskyblue;
+;
 }
