@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Titel der Seite | Name der Website</title>
     <link rel="stylesheet" href="styles.css">
-
+    <script type="text/javascript" src="swipe/swipe.js"></script>
 
     <script>
         var test=0;
@@ -32,7 +32,6 @@
         function hide() {
             document.getElementById("kat"+test).style.display = "none";
         }
-
     </script>
 
 
