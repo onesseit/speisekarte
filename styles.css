@@ -26,6 +26,7 @@ body
 .table td
 {
     border: none;
+    border-bottom: 1px solid;
 }
 .table tr
 {
@@ -42,13 +43,12 @@ body
 
 
 .swipe {
-    background-color: ghostwhite;
+    background: rgba(250,235,215,0.7);
+
     overflow: hidden;
     visibility: hidden;
     position: relative;
     padding-left: 2%;
-    margin-left: 25%;
-    width: 48%;
 }
 .swipe-wrap {
     overflow: hidden;
