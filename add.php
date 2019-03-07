@@ -34,7 +34,7 @@ $kategorien = $conn->query($sql);
             $ErrorMessage=$ErrorMessage."Bitte mindestens einen Preis angeben!<br>";
         }
     }
-    echo $ErrorMessage ?>
+    echo $ErrorMessage; ?>
     </div>
         <form method="post">
         <br></br>Kategorie: <select name="Kategorie">
